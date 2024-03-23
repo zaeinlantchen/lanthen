@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+class Student
+{
+    int studentid=0;
+    string name;
+    float math=0;
+    float english=0;
+    float average=0;
+public:
+    void assigns();
+    void exportation();
+    void addinformation();
+};
+void print() {
+    cout << "学号" << '\t' << "姓名" << '\t' << "数学" << '\t' << "英语" << '\t' << "平均分" << endl;
+}
+int n = 6;
+Student stu[999];
+int main()
+{
+    for (int i = 0;i<n;i++) {
+        stu[i].assigns();
+    }
+    print();
+    for (int i=0;i<n;i++) {
+        stu[i].exportation();
+    }
+for (int i = 0;;i++) {
+    cout << "是否继续输入(继续输入请选是，反之选否)：";
+        string a;
+        cin >> a;
+        if (a == "是")
+            stu[n].addinformation();
+        if (a == "否") {
+            print();
+            for(int i=0;i<n;i++)
+            stu[i].exportation();
+            break;
+        }
+    }
+    return 0;
+}
+void Student::assigns() {
+    cout << "请输入学号：";
+    cin >> studentid;
+    cout << "请输入姓名：";
+    cin >> name;
+    cout << "请输入数学成绩：";
+    cin >> math;
+    cout << "请输入英语成绩：";
+    cin >> english;
+}
+void Student::exportation() {
+    average = (math + english) / 2;  
+    cout << studentid << '\t' << name << '\t' << math << '\t' << english << '\t' << average << endl;
+}
+
+void Student::addinformation() {
+    n = n + 1;
+    for (int i = n - 1; i < n; i++) {
+        stu[i].assigns();
+    }
+}
